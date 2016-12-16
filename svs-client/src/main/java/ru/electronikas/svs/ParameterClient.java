@@ -52,7 +52,7 @@ public class ParameterClient {
     // HTTP POST request
     private String sendPost(String json) throws Exception {
 
-        String url = "http://electronikas.ru:3009/svs/parameters";
+        String url = "http://electronikas.ru/svs/parameters";
 //        String url = "http://localhost:8080/parameters";
         URL object = new URL(url);
         HttpURLConnection con = (HttpURLConnection) object.openConnection();
