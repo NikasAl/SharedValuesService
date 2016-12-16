@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+scp ../target/""
+

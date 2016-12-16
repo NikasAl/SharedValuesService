@@ -1,0 +1,42 @@
+{
+  "name": "example42-tomcat",
+  "version": "2.0.8",
+  "source": "https://github.com/example42/puppet-tomcat",
+  "author": "Alessandro Franceschi",
+  "license": "Apache2",
+  "summary": "Puppet module for tomcat",
+  "description": "This module installs and manages tomcat. Check README.rdoc for details. Puppi is required for some common functions: you can install them without using the whole module. Monitor and firewall dependencies are needed only if the relevant features are enabled",
+  "project_page": "http://www.example42.com",
+  "dependencies": [
+    {
+      "name": "example42/puppi",
+      "version_requirement": ">=2.0.0"
+    }
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "Modulefile": "c658ba4149b35ea00ea986556517842a",
+    "README.md": "70cf010bce349b0e53d637c745303246",
+    "Rakefile": "e90d68823ff237c89224eb139f8926ad",
+    "manifests/init.pp": "146a020848e92a6dc39525e61605f0be",
+    "manifests/instance.pp": "3dcaef5b1b2b69df2773168c85723a62",
+    "manifests/mod_jk.pp": "cc3868f304b53db34987d353cd87c2c5",
+    "manifests/params.pp": "1af632bbe0199cc6625bb8451e585228",
+    "manifests/spec.pp": "fb8da89e4dc2c045a26eaaff1cc24496",
+    "spec/classes/tomcat_spec.rb": "ec43bb05ac334a6fec20a992d74ec713",
+    "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc",
+    "templates/init.erb": "58af1ba6b9f110a1b37f9c4f8e1891e8",
+    "templates/logCompressor.cron.erb": "93540f7cbcdcd48fb9f1d31a2a281e55",
+    "templates/logCompressor.sh.erb": "25e16dadef7637b12056acab0ed4ac4b",
+    "templates/modjk.worker.properties": "9866f2f72189f117b618a30429c50c22",
+    "templates/modjk.workers.properties": "9b776cf0bc750a2efdfd365b0261dee3",
+    "templates/params.erb": "fb8c547ac9528cedd142267480dbcec1",
+    "templates/setenv.sh.erb": "41b2affa3302f4f44a3ceba0be3a93bc",
+    "templates/shutdown.sh.erb": "d93dae6a420f822f38eddada84394937",
+    "templates/spec.erb": "95554a191230174b3ba5942f8d8d5b1e",
+    "templates/startup.sh.erb": "15fbcd92c6f1b2ad9774ec981b7bcd1e",
+    "templates/tomcat-instance-create.erb": "b3b591726bc59385f0faa061d273daea"
+  }
+}

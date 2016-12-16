@@ -1,0 +1,25 @@
+
+Vagrant.configure("2") do |config|
+ 
+#  config.vm.box = "debianCurrent"
+#  config.vm.box_url = "http://ergonlogic.com/files/boxes/debian-current.box"
+  config.vm.box = "lucid33"
+  config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
+ 
+
+ 
+#  config.vm.network :forwarded_port, guest: 8080, host: 8080
+#  config.vm.network :forwarded_port, guest: 5432, host: 5432
+  config.vm.network :private_network, ip: "192.168.60.100"
+
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "512"]
+    vb.customize ["modifyvm", :id, "--cpus", "1"]   
+  end  
+
+  config.vm.provision :puppet do |puppet|
+    puppet.module_path = "./modules"
+  end
+end
+
+

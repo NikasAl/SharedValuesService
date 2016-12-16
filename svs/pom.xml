@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ru.electronikas</groupId>
+    <artifactId>svs</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Shared Values Service</name>
+    <packaging>war</packaging>
+
+    <parent>
+        <groupId>ru.electronikas</groupId>
+        <artifactId>svs-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <properties>
+
+        <!--<embeddables>**/*Stories.java</embeddables>-->
+        <skip.integration.tests>false</skip.integration.tests>
+        <jetty-plugin.version>8.1.5.v20120716</jetty-plugin.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java-version>1.6</java-version>
+
+        <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
+        <jdbc.dialect>org.hibernate.dialect.PostgreSQLDialect</jdbc.dialect>
+        <jdbc.databaseurl>jdbc:postgresql://192.168.60.103:5432/svsdb</jdbc.databaseurl>
+        <jdbc.username>svsuser</jdbc.username>
+        <jdbc.password>password</jdbc.password>
+        <jdbc.update.db.type>create</jdbc.update.db.type>
+        <liquibase.action>update</liquibase.action>
+        <cobertura.version>2.0.3</cobertura.version>
+
+        <!--<org.springframework-version>3.0.5.RELEASE</org.springframework-version>-->
+        <!--<org.springframework.roo-version>1.0.2.RELEASE</org.springframework.roo-version>-->
+        <!--<org.aspectj-version>1.6.9</org.aspectj-version>-->
+        <!--<org.slf4j-version>1.5.10</org.slf4j-version>-->
+
+        <spring.version>3.2.8.RELEASE</spring.version>
+        <spring.security.version>3.2.3.RELEASE</spring.security.version>
+        <jstl.version>1.2</jstl.version>
+        <logback.version>1.1.2</logback.version>
+        <slf4j.version>1.7.6</slf4j.version>
+        <hibernate.version>4.2.11.Final</hibernate.version>
+        <dbcp.version>1.4</dbcp.version>
+        <servletapi.version>2.5</servletapi.version>
+        <jdk.version>1.7</jdk.version>
+
+        <jackson.version>2.5.1</jackson.version>
+        <metrics.version>3.1.0</metrics.version>
+    </properties>
+    <dependencies>
+
+        <dependency>
+            <groupId>ru.electronikas</groupId>
+            <artifactId>svs-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--PerfTest-->
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>jcommander</artifactId>
+            <version>1.48</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+            <version>${metrics.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+
+        <!-- database pool -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${dbcp.version}</version>
+        </dependency>
+
+        <!-- Hibernate ORM -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <!-- Spring 3 dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Spring MVC -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Spring + aspects -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- ORM integration, e.g Hibernate -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <!-- Spring Security JSP Taglib -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <!-- jstl for jsp page -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+
+        <!-- logging, slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servletapi.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>8.4-701.jdbc3</version>
+        </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.7</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Parser-->
+        <dependency>
+            <groupId>net.sourceforge.htmlcleaner</groupId>
+            <artifactId>htmlcleaner</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <!--Databind JSON-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.ttf</exclude>
+                    <exclude>**/*.TTF</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.ttf</include>
+                    <include>**/*.TTF</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/webapp/WEB-INF</directory>
+            </resource>
+        </resources>
+
+        <testResources>
+            <testResource>
+                <directory>src/main/webapp/WEB-INF</directory>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+            <testResource>
+                <directory>${basedir}/src/test/stories</directory>
+                <filtering>false</filtering>
+            </testResource>
+        </testResources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java-version}</source>
+                        <target>${java-version}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <attachClasses>true</attachClasses>
+                    <warName>svs</warName>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>9.2.10.v20150310</version>
+
+                <!--                <configuration>
+                    <jettyEnvXml>${basedir}/jetty-env.xml</jettyEnvXml>
+                </configuration>-->
+            </plugin>
+
+<!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>-->
+        </plugins>
+    </build>
+
+</project>

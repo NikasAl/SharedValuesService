@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ru.electronikas</groupId>
+        <artifactId>svs-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>ru.electronikas</groupId>
+    <artifactId>svs-client</artifactId>
+    <version>1.1</version>
+    <packaging>jar</packaging>
+    <name>Shared Values Service - Client</name>
+
+    <repositories>
+        <repository>
+            <id>home</id>
+            <url>http://192.168.1.3:8081/nexus/content/repositories/thirdparty/</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>ru.electronikas</groupId>
+            <artifactId>svs-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20080701</version>
+            <scope>provided</scope>
+        </dependency>
+<!--
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>2.2.1</version>
+            <scope>provided</scope>
+        </dependency>
+-->
+    </dependencies>
+    <build>
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

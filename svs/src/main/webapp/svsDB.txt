@@ -1,0 +1,3 @@
+Tank3DAdType,AdMob
+Tank3DisMoti,false
+Tank3DisDuel,false
